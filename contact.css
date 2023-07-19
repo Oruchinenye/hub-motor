@@ -1,0 +1,68 @@
+  
+  .card {
+  padding: 60px 30px;
+  position: center;
+  overflow: hidden;
+  background:#CCE7FB66;
+  box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+  z-index: 1;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+
+
+   transition:background-color 0.15s,
+   color 0.15s;
+  }
+
+  .card:hover {
+   background-color:rgb(41, 118, 211) ;
+   color:white ;
+  }
+
+  .card:active {
+   opacity: 0.7;
+  }
+
+.hero {
+  width: 100%;
+  position: relative;
+  background: var(--color-primary);
+  padding: 100px;
+  font-family: Arial;
+  font-weight: bold;
+  line-height: 24px;
+  margin-bottom: 5px;
+  font-size: 40px;
+  color: #000000;
+  text-align: left;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+  
+  .hero {
+    cursor: pointer;
+}
+  
+  .hero:hover {
+    text-decoration: underline;
+}
+
+.heroein {
+  font-size: 14px;
+  color: gray;
+  margin-left: 104px;
+}
+  
+  .heroein {
+    cursor: pointer;
+}
+  
+  .heroein:hover {
+    text-decoration: underline;
+}
+
+
