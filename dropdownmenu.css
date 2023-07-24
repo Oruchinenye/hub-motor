@@ -1,4 +1,11 @@
 .Menu {
   text-align: center;
+  text-decoration: underline;
+
+  
+}
+
+.adore {
+  text-decoration: underline black;
   
 }

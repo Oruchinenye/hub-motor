@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="vehicle.css">
+  <title>Vehicles</title>
+  <script defer src="//unpkg.com/alpinejs"></script>
+
+</head>
+
+<body>
+  <nav class="bg-[#004475] flex space-x-4 items-center justify-center">
+    <a class="w-1/5" href="/">
+      <img src="images/logo1.png">
+    </a>
+    <div class="w-3/8">
+      <ul class="flex space-x-1 text-sm">
+        <li><a class="text-white hover:text-gray-300 hover:bg-orange-600 py-3 px-4" href="">HOME</a></li>
+        <li><a class="text-white hover:text-gray-300 hover:bg-orange-600 py-3 px-4" href="">ABOUT US</a></li>
+        <li><a class="text-white hover:text-gray-300 bg-orange-600 py-3 px-4" href="./vehicles_js.html">VEHICLES</a></li>
+        <li><a class="text-white hover:text-gray-300 hover:bg-orange-600 py-3 px-4" href="">SHOPPING TOOLS</a></li>
+        <li><a class="text-white hover:text-gray-300 hover:bg-orange-600 py-3 px-4" href="">SEARCH INVENTORY</a></li>
+        <li><a class="text-white hover:text-gray-300 hover:bg-orange-600 py-3 px-4" href="./contact.html">CONTACT US</a></li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Begin Section -->
+  <section x-data="vehicles" class="container mx-auto space-y-10 pb-10">
+    <div class="menu flex justify-center py-3">
+      <ul class="flex  justify-between w-1/5 border-b border-b-2">
+        <template x-for="filter in filters" :key="filter.value">
+          <li :class="currentFilter == filter.value? 'font-bold text-gray-500': '' "
+            class="text-left text-md text-gray-400 hover:text-gray-500 hover:font-bold">
+            <button x-text="filter.title" @click="setBrand(filter.value)">Brands</button>
+          </li>
+        </template>
+      </ul>
+    </div>
+    <template x-if="currentFilter == 'brand'">
+      <div>
+        <template x-for="(brand,key) of Object.keys(filteredCars)" :key="key">
+          <div>
+            <h1 class="text-[#004475] font-black text-6x1 dark:text-white text-center my-10" x-text="brand"></h1>
+            <div class="grid lg:grid-cols-2 grid-cols-2 gap-10 content-center px-20">
+              <template x-for="(car, index) of filteredCars[brand]" :key="index">
+                <article class="overflow-hidden shadow rounded-lg flex justify-center items-center h-[15rem]">
+                  <div :class="`bg-[url(${car.imgUrl})]`" class="w-3/5 h-full bg-cover bg-no-repeat"></div>
+                  <div class="w-2/5 h-full bg-[#004475] backdrop-blur-md py-10 px-2 flex flex-col justify-between">
+                    <h4 class="text-white text-gray-300 font-bold" x-html="car.title"> </h4>
+                    <div class="text-white text-sm" x-text="car.brand">23,000,000 Naira</div>
+                    <div class="flex justify-center items-center">
+                      <a class="bg-orange-600 rounded-full text-white hover:shadow px-3 py-1" href="#">view car</a>
+                    </div>
+                  </div>
+                </article>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <template x-if="currentFilter == 'used' || currentFilter == 'hotDeal'">
+      <div>
+        <!-- <template x-else> -->
+        <div class="grid lg:grid-cols-2 grid-cols-2 gap-10 content-center px-20">
+          <template x-for="(car, index) in filteredCars" :key="index">
+
+            <article class="overflow-hidden shadow rounded-lg flex justify-center items-center h-[15rem]">
+              <div :class="`bg-[url(${car.imgUrl})]`" class="w-3/5 h-full bg-cover bg-no-repeat"></div>
+              <div class="w-2/5 h-full bg-[#004475] backdrop-blur-md py-10 px-2 flex flex-col justify-between">
+                <h4 class="text-white text-gray-300 font-bold" x-html="car.title"> </h4>
+                <div class="text-white text-sm" x-text="car.brand">23,000,000 Naira</div>
+                <div class="flex justify-center items-center">
+                  <a class="bg-orange-600 rounded-full text-white hover:shadow px-3 py-1" href="#">view car</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- End of car -->
+          </template>
+        </div>
+      </div>
+      <!-- </template>  -->
+    </template>
+  </section>
+  <!-- End section -->
+  <script src="/js/vehicles.js"></script>
+</body>
+
+</html>
